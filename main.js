@@ -1,0 +1,1 @@
+document.getElementById("wrap").innerHTML = "halo js";
