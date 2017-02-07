@@ -4,11 +4,19 @@
     </head>
     <script src="angular.min.js"></script>
     <body>
+        <!--
         <input type="text" ng-model="name"> <br>
         Nama: {{ name }}
         <br>
         <br>
         <input type="text" ng-model="num"> <br>
         Hasil dikali 5: {{ num*5 }}
+        -->
+
+        <div ng-init="namabuah=['jeruk','apel','melon','salak']"></div>
+
+        <ul>
+            <li ng-repeat="buah in namabuah">{{ buah }}</li>
+        </ul>
     </body>
 </html>
