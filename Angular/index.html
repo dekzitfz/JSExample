@@ -1,4 +1,4 @@
-<html ng-app>
+<html ng-app="myAngularApp">
     <head>
         <title></title>
     </head>
@@ -21,6 +21,7 @@
         </ul>
         -->
 
+        <!--
         <div ng-init="datas = [
             {
                 nama:'Adi',
@@ -35,11 +36,43 @@
                 kota:'Sanur'
             }
         ]"></div>
+        -->
 
-        <input type="text" ng-model="search">
+        <div ng-controller="dataOrang">
 
-        <ul>
-            <li ng-repeat="data in datas | filter:search">{{ data.nama }}, {{data.kota}}</li>
-        </ul>
+            <input type="text" ng-model="search">
+
+            <ul>
+                <li ng-repeat="data in datas | filter:search">{{ data.nama }}, {{data.kota}}</li>
+            </ul>
+
+        </div>
+
+        <script>
+            //init module
+            var modul = angular.module('myAngularApp',[]);
+
+            //init controller
+            modul.controller('dataOrang', ['$scope', function($scope){
+                $scope.datas = [
+                                {
+                                    nama:'Adi',
+                                    kota:'Jimbaran'
+                                },
+                                {
+                                    nama:'Made',
+                                    kota:'Denpasar'
+                                },
+                                {
+                                    nama:'Wayan',
+                                    kota:'Sanur'
+                                },
+                                {
+                                    nama:'ketut',
+                                    kota:'Jembarana'
+                                }
+                              ];
+            }]);
+        </script>
     </body>
 </html>
