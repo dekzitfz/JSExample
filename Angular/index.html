@@ -7,7 +7,8 @@
         
         <!--<div ng-include="'header.html'"></div>-->
 
-        <header-title></header-title>
+        <!--<header-title></header-title> //Element-->
+        <div header-title></div>
 
         <!--
         <input type="text" ng-model="name"> <br>
@@ -60,7 +61,7 @@
             //template directive
             modul.directive('headerTitle',function(){ //'headerTitle' bcoz of CamelCase
                 return{
-                    restirct    : 'E', //E for Element
+                    restirct    : 'A', //E for Element, A for Attribute
                     templateUrl : 'header.html'
                 }
             });
