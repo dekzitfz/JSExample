@@ -5,7 +5,9 @@
     <script src="angular.min.js"></script>
     <body>
         
-        <div ng-include="'header.html'"></div>
+        <!--<div ng-include="'header.html'"></div>-->
+
+        <header-title></header-title>
 
         <!--
         <input type="text" ng-model="name"> <br>
@@ -54,6 +56,14 @@
         <script>
             //init module
             var modul = angular.module('myAngularApp',[]);
+
+            //template directive
+            modul.directive('headerTitle',function(){
+                return{
+                    restirct    : 'E',
+                    templateUrl : 'header.html'
+                }
+            });
 
             //init controller
             modul.controller('dataOrang', ['$scope', function($scope){
