@@ -58,9 +58,9 @@
             var modul = angular.module('myAngularApp',[]);
 
             //template directive
-            modul.directive('headerTitle',function(){
+            modul.directive('headerTitle',function(){ //'headerTitle' bcoz of CamelCase
                 return{
-                    restirct    : 'E',
+                    restirct    : 'E', //E for Element
                     templateUrl : 'header.html'
                 }
             });
