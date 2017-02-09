@@ -1,0 +1,6 @@
+<div>
+    <input type="text" ng-model="search">
+        <ul>
+            <li ng-repeat="data in datas | filter:search">{{ data.nama }}, {{data.kota}}</li>
+        </ul>
+</div>

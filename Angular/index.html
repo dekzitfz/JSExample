@@ -3,6 +3,7 @@
         <title></title>
     </head>
     <script src="angular.min.js"></script>
+    <script src="angular-route.js"></script>
     <body>
         
         <!--<div ng-include="'header.html'"></div>-->
@@ -44,15 +45,7 @@
         ]"></div>
         -->
 
-        <div ng-controller="dataOrang">
-
-            <input type="text" ng-model="search">
-
-            <ul>
-                <li ng-repeat="data in datas | filter:search">{{ data.nama }}, {{data.kota}}</li>
-            </ul>
-
-        </div>
+        <div part-title></div>
 
         <script>
             //init module
@@ -66,9 +59,12 @@
                 }
             });
 
-            //init controller
-            modul.controller('dataOrang', ['$scope', function($scope){
-                $scope.datas = [
+            modul.directive('partTitle',function(){
+                return{
+                    restirct    : 'A',
+                    templateUrl : 'part.html',
+                    controller  : function($scope){
+                        $scope.datas = [
                                 {
                                     nama:'Adi',
                                     kota:'Jimbaran'
@@ -86,7 +82,31 @@
                                     kota:'Jembarana'
                                 }
                               ];
-            }]);
+                    }
+                }
+            });
+
+            //init controller
+            // modul.controller('dataOrang', ['$scope', function($scope){
+            //     $scope.datas = [
+            //                     {
+            //                         nama:'Adi',
+            //                         kota:'Jimbaran'
+            //                     },
+            //                     {
+            //                         nama:'Made',
+            //                         kota:'Denpasar'
+            //                     },
+            //                     {
+            //                         nama:'Wayan',
+            //                         kota:'Sanur'
+            //                     },
+            //                     {
+            //                         nama:'ketut',
+            //                         kota:'Jembarana'
+            //                     }
+            //                   ];
+            // }]);
         </script>
     </body>
 </html>
