@@ -11,6 +11,8 @@
         <!--<header-title></header-title> //Element-->
         <div header-title></div>
 
+        <div ng-view></div>
+
         <!--
         <input type="text" ng-model="name"> <br>
         Nama: {{ name }}
@@ -49,7 +51,7 @@
 
         <script>
             //init module
-            var modul = angular.module('myAngularApp',[]);
+            var modul = angular.module('myAngularApp',['ngRoute']);
 
             //template directive
             modul.directive('headerTitle',function(){ //'headerTitle' bcoz of CamelCase
@@ -107,6 +109,26 @@
             //                     }
             //                   ];
             // }]);
+
+            //route
+            modul.config(function($routeProvider){
+                $routeProvider
+                .when('/tambahdata',{
+                    templateUrl : 'add-data.html',
+                    controller  : function($scope){
+                        $scope.tambahData = function(){
+                            $scope.datas.push({
+                                nama: $scope.databaru.nama,
+                                kota: $scope.databaru.kota
+                            });
+                        }
+                    }
+                })
+                .when('/tentang',{
+                    templateUrl : 'tentang.html'
+                })
+                .otherwise({redirectTo:'/'});
+            });
         </script>
     </body>
 </html>
