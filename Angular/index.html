@@ -6,46 +6,9 @@
     <script src="angular-route.js"></script>
     <body>
         
-        <!--<div ng-include="'header.html'"></div>-->
-
-        <!--<header-title></header-title> //Element-->
         <div header-title></div>
 
         <div ng-view></div>
-
-        <!--
-        <input type="text" ng-model="name"> <br>
-        Nama: {{ name }}
-        <br>
-        <br>
-        <input type="text" ng-model="num"> <br>
-        Hasil dikali 5: {{ num*5 }}
-        -->
-
-        <!--
-        <div ng-init="namabuah=['jeruk','apel','melon','salak']"></div>
-
-        <ul>
-            <li ng-repeat="buah in namabuah">{{ buah }}</li>
-        </ul>
-        -->
-
-        <!--
-        <div ng-init="datas = [
-            {
-                nama:'Adi',
-                kota:'Jimbaran'
-            },
-            {
-                nama:'Made',
-                kota:'Denpasar'
-            },
-            {
-                nama:'Wayan',
-                kota:'Sanur'
-            }
-        ]"></div>
-        -->
 
         <div part-title></div>
 
@@ -65,50 +28,41 @@
                 return{
                     restirct    : 'A',
                     templateUrl : 'part.html',
-                    controller  : function($scope){
-                        $scope.datas = [
-                                {
-                                    nama:'Adi',
-                                    kota:'Jimbaran'
-                                },
-                                {
-                                    nama:'Made',
-                                    kota:'Denpasar'
-                                },
-                                {
-                                    nama:'Wayan',
-                                    kota:'Sanur'
-                                },
-                                {
-                                    nama:'ketut',
-                                    kota:'Jembarana'
-                                }
-                              ];
+                    controller  : function($scope, $http){
+                        // $scope.datas = [
+                        //         {
+                        //             nama:'Adi',
+                        //             kota:'Jimbaran'
+                        //         },
+                        //         {
+                        //             nama:'Made',
+                        //             kota:'Denpasar'
+                        //         },
+                        //         {
+                        //             nama:'Wayan',
+                        //             kota:'Sanur'
+                        //         },
+                        //         {
+                        //             nama:'ketut',
+                        //             kota:'Jembarana'
+                        //         }
+                        //       ];
+
+                        // $http.get('database.php').success(function(hasil){
+                        //     $scope.datas = hasil;
+                        // });
+
+                        $http({
+                            method: 'GET',
+                            url: 'database.php'
+                        }).then(function successCallback(response) {
+                                $scope.datas = response.data;
+                        }, function errorCallback(response) {
+                                
+                        });
                     }
                 }
             });
-
-            //init controller
-            // modul.controller('dataOrang', ['$scope', function($scope){
-            //     $scope.datas = [
-            //                     {
-            //                         nama:'Adi',
-            //                         kota:'Jimbaran'
-            //                     },
-            //                     {
-            //                         nama:'Made',
-            //                         kota:'Denpasar'
-            //                     },
-            //                     {
-            //                         nama:'Wayan',
-            //                         kota:'Sanur'
-            //                     },
-            //                     {
-            //                         nama:'ketut',
-            //                         kota:'Jembarana'
-            //                     }
-            //                   ];
-            // }]);
 
             //route
             modul.config(function($routeProvider){
