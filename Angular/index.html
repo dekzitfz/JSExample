@@ -29,43 +29,26 @@
                     restirct    : 'A',
                     templateUrl : 'part.html',
                     controller  : function($scope, $http){
-                        // $scope.datas = [
-                        //         {
-                        //             nama:'Adi',
-                        //             kota:'Jimbaran'
-                        //         },
-                        //         {
-                        //             nama:'Made',
-                        //             kota:'Denpasar'
-                        //         },
-                        //         {
-                        //             nama:'Wayan',
-                        //             kota:'Sanur'
-                        //         },
-                        //         {
-                        //             nama:'ketut',
-                        //             kota:'Jembarana'
-                        //         }
-                        //       ];
-
-                        // $http.get('database.php').success(function(hasil){
-                        //     $scope.datas = hasil;
-                        // });
-
+                        //get data with http
                         $http({
                             method: 'GET',
                             url: 'database.php'
                         }).then(function successCallback(response) {
                                 $scope.datas = response.data;
                         }, function errorCallback(response) {
-                                
+                                //handle error here
                         });
                     }
                 }
             });
 
+            // modul.config(['$locationProvider', function($locationProvider) {
+            //     $locationProvider.hashPrefix('');
+            // }]);
+
             //route
-            modul.config(function($routeProvider){
+            modul.config(function($locationProvider,$routeProvider){
+                $locationProvider.hashPrefix('');
                 $routeProvider
                 .when('/tambahdata',{
                     templateUrl : 'add-data.html',
@@ -83,6 +66,8 @@
                 })
                 .otherwise({redirectTo:'/'});
             });
+
+            
         </script>
     </body>
 </html>
